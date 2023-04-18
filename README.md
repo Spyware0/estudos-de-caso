@@ -1,2 +1,2 @@
-# estudo-caso
-Estudo de caso 2.1
+# Estudos de caso
+- [x] Estudo de caso 2.1
