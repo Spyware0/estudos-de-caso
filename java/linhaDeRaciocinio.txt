@@ -1,0 +1,15 @@
+criar função depositar
+
+passos descobertos:
+
+função depositar() fica na classe Caixa;
+
+vai pegar o banco de contas "bdContas" e buscar a conta através do número informado pelo usuário;
+
+o número da conta informado pelo usuário estará na variável "meuTerminal" de tipo Terminal;
+
+a classe Terminal será a interface para o usuário realizar suas funções;
+
+a classe Caixa receberá as instruções da classe Terminal para verificar as operações, calcular as cédulas e etc;
+
+# paramos com o erro do depósito, onde o valor acrescentado não era o mesmo informado

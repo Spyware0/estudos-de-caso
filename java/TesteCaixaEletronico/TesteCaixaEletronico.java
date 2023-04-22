@@ -6,11 +6,17 @@ public class TesteCaixaEletronico {
         Cliente gabriel = new Cliente("02468", "Gabriel Luis");
         Cliente willian = new Cliente("13579", "Willian Walace");
         
-        Conta contag = new Conta(1, gabriel, 12345, 2000);
-        Conta contaw = new Conta(2, willian, 54321, 1500);
+        Conta contag = new Conta(1, gabriel, 12345, 3000);
+        Conta contaw = new Conta(2, willian, 54321, 1000);
         
         CadastroContas cadastro = new CadastroContas(2);
-        
+
+        cadastro.adicionaConta(contaw);
+        cadastro.adicionaConta(contag);
+
+        Terminal meuTerm = new Terminal(cadastro);
+        meuTerm.iniciaOperacao();
+
     }
     
 }

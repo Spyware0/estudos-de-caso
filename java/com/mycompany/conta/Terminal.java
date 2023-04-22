@@ -35,6 +35,17 @@ public class Terminal {
                 case 3:
                     this.meuCaixa.recarrega();
                     break;
+                case 5:
+                    boolean bo = this.meuCaixa.depositar(getInt("Numero da Conta"), (double)getInt("Valor"),getInt("Senha"));
+                    
+                    if (bo) {
+                        System.out.println("Depósito feito!");
+                    }
+                    else{
+                        System.out.println("Depósito recusado");
+                    }
+
+                    break;
            }
            opcao = getOpcao();
         }
@@ -47,32 +58,33 @@ public class Terminal {
     }
     
     private int getOpcao() {
-    int opcao;
-    do {
-    if (this.modoAtual == 1) {
-    opcao = getInt("Opcao: 1 - Consulta Saldo, 2 - Saque, 4 - Sair");
+        int opcao;
+        do {
+            if (this.modoAtual == 1) {
+                opcao = getInt("Opcao:\n1 - Consulta Saldo\n2 - Saque\n5 - depósito\n4 - Sair");
 
-    if (opcao != 1 & opcao != 2 & opcao != 4) {
-    opcao = 0;
-   }
-   } else {
-    opcao = getInt("Opcao: 3 - Recarrega, 4 - Sair");
+                if (opcao != 1 & opcao != 2  & opcao != 5 & opcao != 4) {
+                    opcao = 0;
+                }
+        }else {
+            opcao = getInt("Opcao:\n3 - Recarrega\n4 - Sair");
 
-    if (opcao != 3 & opcao != 4) {
-    opcao = 0;
-   }
-   }
-   } while (opcao == 0);
-    return opcao;
-   }
+            if (opcao != 3 & opcao != 4) {
+                opcao = 0;
+            }
+        }
+        } while (opcao == 0);
+        return opcao;
+    }
+
     private int getInt(String string) {
-    Scanner r = new Scanner(System.in);
-    System.out.println("Entre com " + string);
-    if (r.hasNextInt()) {
-    return r.nextInt();
-   }
-    String st = r.next();
-    System.out.println("Erro na Leitura de Dados");
-    return 0;
+        Scanner r = new Scanner(System.in);
+        System.out.println("Entre com " + string);
+        if (r.hasNextInt()) {
+            return r.nextInt();
+        }
+        String st = r.next();
+        System.out.println("Erro na Leitura de Dados");
+        return 0;
    }
 }
