@@ -58,24 +58,4 @@ public class Caixa {
         }
         return true;
     }
-
-    // análise
-    /*
-    public boolean efetuaSaque(int numeroDaConta, double valor, int senha){
-        if(valor < 0 || (valor%50) != 0 || valor > 500 || valor > this.saldo){
-            return false;
-        }
-        Conta conta = bdContas.buscaConta(numeroDaConta);
-        if (conta == null || !conta.debitaValor(valor, senha, "Saque Automatico")){
-            return false;
-        }
-
-        this.liberaCedulas((int)(valor/50));
-        this.saldo -= valor;
-        if(this.saldo < 500){
-            this.meuTerminal.setModo(0);
-        }
-        return true;
-    }
-    */
 }
