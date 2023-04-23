@@ -1,8 +1,17 @@
 package TesteCaixaEletronico;
-import com.mycompany.conta.*;
+import gestoes.*;
+import java.io.IOException;
 
 public class TesteCaixaEletronico {
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException, InterruptedException {
+
+        //limpar console
+        if (System.getProperty("os.name").contains("Windows"))
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        else
+            Runtime.getRuntime().exec("clear");
+        //
+
         Cliente gabriel = new Cliente("02468", "Gabriel Luis");
         Cliente willian = new Cliente("13579", "Willian Walace");
         
