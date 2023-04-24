@@ -26,6 +26,8 @@ public class TesteCaixaEletronico {
         Terminal meuTerm = new Terminal(cadastro);
         meuTerm.iniciaOperacao();
 
+       // System.out.println(contag.historico.geraHistoricoDeLancamentos()); // tentativa de acessar
+
     }
     
 }

@@ -11,6 +11,7 @@ public class Terminal {
     
     public void iniciaOperacao() {
         int opcao;
+        boolean b;
         opcao = this.getOpcao();
         while (opcao != 4) {
             switch (opcao) {
@@ -24,7 +25,7 @@ public class Terminal {
                     }
                     break;
                 case 2:
-                    boolean b = this.meuCaixa.efetuaSaque(getInt("Numero da Conta"), (double) getInt("Valor"),getInt("Senha"));
+                    b = this.meuCaixa.efetuaSaque(getInt("Numero da Conta"), (double) getInt("Valor"),getInt("Senha"));
                     if (b) {
                         System.out.println("Retire o dinheiro");
                     }
@@ -36,16 +37,25 @@ public class Terminal {
                     this.meuCaixa.recarrega();
                     break;
                 case 5:
-                    boolean bo = this.meuCaixa.depositar(getInt("Numero da Conta"), getInt("Valor") * 1.0,getInt("Senha"));
+                    System.out.println("\n1 - Cheque\n2 - Dinheiro");
                     
-                    if (bo) {
-                        System.out.println("Depósito feito!");
-                    }
-                    else{
-                        System.out.println("Depósito recusado");
-                    }
-
+                    getInt("a opção");
+                    b = this.meuCaixa.depositar(getInt("Numero da Conta"), (double)getInt("Valor"),getInt("Senha"));
+                    
+                    System.out.println(b ? "Depósito feito!" : "Depósito recusado");
                     break;
+                case 6:
+                    b = this.meuCaixa.transferencia(getInt("Numero da Conta de transferência"), getInt("Número da conta para transferência"), (double) getInt("Valor"),getInt("Senha"));
+
+                    System.out.println(b ? "Transferência feita!" : "Transferência recusada");
+                    break;
+                case 7:
+                b = this.meuCaixa.consultarExtrato(getInt("Número da conta"),getInt("Senha"));
+
+                break;
+
+                    
+                    
            }
            opcao = getOpcao();
         }
@@ -61,9 +71,9 @@ public class Terminal {
         int opcao;
         do {
             if (this.modoAtual == 1) {
-                opcao = getInt("Opcao:\n1 - Consulta Saldo\n2 - Saque\n5 - depósito\n4 - Sair");
+                opcao = getInt("Opcao:\n1 - Consulta Saldo\n2 - Saque\n5 - depósito\n6 - transferência\n7 - extrato\n4 - Sair");
 
-                if (opcao != 1 & opcao != 2  & opcao != 5 & opcao != 4) {
+                if (opcao != 1 & opcao != 2  & opcao != 5 & opcao != 4 & opcao != 6 & opcao != 7) {
                     opcao = 0;
                 }
         }else {
@@ -85,7 +95,6 @@ public class Terminal {
         }
         String st = r.next();
         System.out.println("Erro na Leitura de Dados");
-        r.close();
         return 0;
    }
 }

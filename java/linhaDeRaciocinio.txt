@@ -13,3 +13,8 @@ a classe Terminal será a interface para o usuário realizar suas funções;
 a classe Caixa receberá as instruções da classe Terminal para verificar as operações, calcular as cédulas e etc;
 
 # paramos com o erro do depósito, onde o valor acrescentado não era o mesmo informado
+
+conseguimos exibir o extrato bancário da conta (com as variáveis públicas), agora falta exibir com as variáveis privadas. Variáveis a serem corrigidas:
+
+# public Lancamento[] lancamentos; // do HistoricoDeLancamento
+# public HistoricoDeLancamento historico; // da Conta

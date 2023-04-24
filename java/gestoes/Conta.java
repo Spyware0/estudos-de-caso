@@ -4,7 +4,7 @@ public class Conta {
     private int senha;
     private Cliente titular;
     private double saldo;
-    private HistoricoDeLancamento historico;
+    public HistoricoDeLancamento historico; // teste
     
     public Conta(int numero, Cliente titular, int senha, double saldo) {
         this.numero = numero;
@@ -54,5 +54,7 @@ public class Conta {
     private boolean senhaEhValida(int senha) {
         return this.senha == senha;
     }
+        
+    
 }
 

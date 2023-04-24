@@ -1,6 +1,6 @@
 package gestoes;
 public class HistoricoDeLancamento {
-    private Lancamento[] lancamentos;
+    public Lancamento[] lancamentos; // teste
     private int ultimoLancamento;
     
     public HistoricoDeLancamento(int numeroDeLancamentos) {
@@ -26,4 +26,7 @@ public class HistoricoDeLancamento {
         }
         return historico.toString();
     }
+
+    
+
 }

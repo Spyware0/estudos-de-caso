@@ -58,4 +58,29 @@ public class Caixa {
         }
         return true;
     }
+
+    public boolean transferencia(int numeroDaContaEnvia, int numeroDaContaRecebe, double valor, int senha){
+        Conta contaEnvia = bdContas.buscaConta(numeroDaContaEnvia);
+        Conta contaRecebe = bdContas.buscaConta(numeroDaContaRecebe);
+
+        if (contaEnvia == null || contaRecebe == null || !contaRecebe.creditaValor(valor, "Transferência recebida")){
+            return false;
+        }
+
+        contaEnvia.debitaValor(valor, senha, "Transferência enviada");
+        return true;
+    }
+
+    public boolean consultarExtrato(int numeroDaConta, int senha){
+        Conta conta = bdContas.buscaConta(numeroDaConta);
+
+        if (conta == null){
+            return false;
+        }
+
+        for(int i = 0; i < 10; i++)
+            if (conta.historico.lancamentos[i] != null)
+                System.out.println(conta.historico.lancamentos[i].getDescricao() + ": R$" + conta.historico.lancamentos[i].getValor());
+        return true;
+    }
 }
