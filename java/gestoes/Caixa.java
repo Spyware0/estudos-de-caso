@@ -71,16 +71,12 @@ public class Caixa {
         return true;
     }
 
-    public boolean consultarExtrato(int numeroDaConta, int senha){
+    public void consultarExtrato(int numeroDaConta, int senha){
         Conta conta = bdContas.buscaConta(numeroDaConta);
 
-        if (conta == null){
-            return false;
+        if (conta != null){
+            System.out.println(conta.getHistorico());
         }
 
-        for(int i = 0; i < 10; i++)
-            if (conta.historico.lancamentos[i] != null)
-                System.out.println(conta.historico.lancamentos[i].getDescricao() + ": R$" + conta.historico.lancamentos[i].getValor());
-        return true;
     }
 }

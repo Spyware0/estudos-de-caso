@@ -1,6 +1,7 @@
 package gestoes;
 import java.util.Scanner;
 
+
 public class Terminal {
     private Caixa meuCaixa;
     private int modoAtual;
@@ -50,7 +51,7 @@ public class Terminal {
                     System.out.println(b ? "Transferência feita!" : "Transferência recusada");
                     break;
                 case 7:
-                b = this.meuCaixa.consultarExtrato(getInt("Número da conta"),getInt("Senha"));
+                this.meuCaixa.consultarExtrato(getInt("número da conta"), getInt("senha"));
 
                 break;
 
@@ -71,6 +72,7 @@ public class Terminal {
         int opcao;
         do {
             if (this.modoAtual == 1) {
+                    
                 opcao = getInt("Opcao:\n1 - Consulta Saldo\n2 - Saque\n5 - depósito\n6 - transferência\n7 - extrato\n4 - Sair");
 
                 if (opcao != 1 & opcao != 2  & opcao != 5 & opcao != 4 & opcao != 6 & opcao != 7) {

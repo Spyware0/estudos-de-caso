@@ -11,6 +11,7 @@ public class TesteCaixaEletronico {
         else
             Runtime.getRuntime().exec("clear");
         //
+        
 
         Cliente gabriel = new Cliente("02468", "Gabriel Luis");
         Cliente willian = new Cliente("13579", "Willian Walace");
@@ -25,9 +26,6 @@ public class TesteCaixaEletronico {
 
         Terminal meuTerm = new Terminal(cadastro);
         meuTerm.iniciaOperacao();
-
-       // System.out.println(contag.historico.geraHistoricoDeLancamentos()); // tentativa de acessar
-
     }
     
 }

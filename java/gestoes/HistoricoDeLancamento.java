@@ -1,6 +1,6 @@
 package gestoes;
 public class HistoricoDeLancamento {
-    public Lancamento[] lancamentos; // teste
+    private Lancamento[] lancamentos;
     private int ultimoLancamento;
     
     public HistoricoDeLancamento(int numeroDeLancamentos) {
@@ -22,7 +22,8 @@ public class HistoricoDeLancamento {
     public String geraHistoricoDeLancamentos() {
         StringBuilder historico = new StringBuilder();
         for (int i = 0; i < this.ultimoLancamento; i++) {
-            historico.append(this.lancamentos[i].getDescricao()).append(": R$").append(this.lancamentos[i].getValor()).append("\n");
+            if (this.lancamentos[i] != null)
+                historico.append(this.lancamentos[i].getDescricao()).append(": R$").append(this.lancamentos[i].getValor()).append("\n");
         }
         return historico.toString();
     }

@@ -4,7 +4,7 @@ public class Conta {
     private int senha;
     private Cliente titular;
     private double saldo;
-    public HistoricoDeLancamento historico; // teste
+    private HistoricoDeLancamento historico;
     
     public Conta(int numero, Cliente titular, int senha, double saldo) {
         this.numero = numero;
@@ -53,6 +53,10 @@ public class Conta {
 
     private boolean senhaEhValida(int senha) {
         return this.senha == senha;
+    }
+
+    public String getHistorico(){
+        return this.historico.geraHistoricoDeLancamentos();
     }
         
     
