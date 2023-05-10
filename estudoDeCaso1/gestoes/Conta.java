@@ -55,8 +55,10 @@ public class Conta {
         return this.senha == senha;
     }
 
-    public String getHistorico(){
-        return this.historico.geraHistoricoDeLancamentos();
+    public String geraHistorico(int senha){
+        if (this.senha == senha)
+            return this.historico.geraHistoricoDeLancamentos();
+        return null;
     }
         
     

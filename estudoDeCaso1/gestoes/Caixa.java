@@ -10,6 +10,7 @@ public class Caixa {
         this.bdContas = bd;
     }
 
+    
     public double consultaSaldo(int numeroDaConta, int senha){
         Conta conta;
         conta = this.bdContas.buscaConta(numeroDaConta);
@@ -17,6 +18,7 @@ public class Caixa {
             return conta.verificaSaldo(senha);
         return -1;
     }
+
 
     public boolean efetuaSaque(int numeroDaConta, double valor, int senha){
         if(valor < 0 || (valor%50) != 0 || valor > 500 || valor > this.saldo){
@@ -35,10 +37,12 @@ public class Caixa {
         return true;
     }
 
+
     public void recarrega(){
         this.saldo = 2000;
         this.meuTerminal.setModo(1);
     }
+
 
     private void liberaCedulas(int quantidade){
         while(quantidade-- > 0){
@@ -46,36 +50,34 @@ public class Caixa {
         }
     } 
 
-    //
+
     public boolean depositar(int numeroDaConta, double valor, int senha){
         Conta conta = bdContas.buscaConta(numeroDaConta);
         if (conta == null || !conta.creditaValor(valor, "Depósito")){
             return false;
         }
-        this.saldo += valor;
-        if(this.saldo < 500){
-            this.meuTerminal.setModo(0);
-        }
         return true;
     }
+
 
     public boolean transferencia(int numeroDaContaEnvia, int numeroDaContaRecebe, double valor, int senha){
         Conta contaEnvia = bdContas.buscaConta(numeroDaContaEnvia);
         Conta contaRecebe = bdContas.buscaConta(numeroDaContaRecebe);
 
-        if (contaEnvia == null || contaRecebe == null || !contaRecebe.creditaValor(valor, "Transferência recebida")){
+        if (contaEnvia == null || contaRecebe == null || !contaEnvia.debitaValor(valor, senha, "Transferência enviada")
+         || !contaRecebe.creditaValor(valor, "Transferência recebida")){
             return false;
         }
 
-        contaEnvia.debitaValor(valor, senha, "Transferência enviada");
         return true;
     }
+
 
     public void consultarExtrato(int numeroDaConta, int senha){
         Conta conta = bdContas.buscaConta(numeroDaConta);
 
         if (conta != null){
-            System.out.println(conta.getHistorico());
+            System.out.println(conta.geraHistorico(senha));
         }
 
     }
