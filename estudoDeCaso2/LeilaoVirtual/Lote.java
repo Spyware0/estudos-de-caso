@@ -43,4 +43,9 @@ public class Lote {
     private void setMaiorLance(Lance maiorLance) {
         this.maiorLance = maiorLance;
     }
+    
+    
+    public String toString(){
+        return "Número: " + getNumero() + "\nDescrição: " + getDescricao();
+    }
 }
