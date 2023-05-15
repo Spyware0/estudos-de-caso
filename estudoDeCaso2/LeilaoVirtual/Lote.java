@@ -15,6 +15,12 @@ public class Lote {
         return this.numero;
     }
 
+    public boolean getVendido(){
+        if(this.maiorLance != null){
+            return true;
+        }
+        return false;
+    }
 
     public String getDescricao() {
         return this.descricao;
@@ -42,5 +48,10 @@ public class Lote {
 
     private void setMaiorLance(Lance maiorLance) {
         this.maiorLance = maiorLance;
+    }
+    
+    
+    public String toString(){
+        return "Número: " + getNumero() + "\nDescrição: " + getDescricao();
     }
 }
