@@ -1,6 +1,5 @@
 package estudoDeCaso2.main;
 import estudoDeCaso2.LeilaoVirtual.*;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -27,4 +26,3 @@ public class Main {
         leilao.close();
     }
 }
-    

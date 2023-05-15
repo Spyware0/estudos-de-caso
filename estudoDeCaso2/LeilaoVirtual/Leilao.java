@@ -43,12 +43,13 @@ public class Leilao{
         return null;
         }
     }
+
     public void lanceLote(int indice, Pessoa p, double valor){
-        this.lotes.get(indice).lancePara(p, valor);
+        this.lotes.get(indice).lancePara(p, valor); // retornar string builder
     }
-    
+
     public void close(){
-        for (Lote lote : this.lotes) {
+        for (Lote lote : lotes){
             Lance lance = lote.getMaiorLance();
             try{
                 System.out.println(lote.toString());
@@ -63,19 +64,17 @@ public class Leilao{
         }
     }
 
-
-    public ArrayList<Lote> getNaoVendidos(){
-        ArrayList<Lote> naoVendidos = new ArrayList<Lote>();
+    public  ArrayList<Lote> getNaoVendidos() {
+        ArrayList<Lote> naoVendidos = new ArrayList<>();
         
-        for (Lote lote : this.lotes) {
-            if (!lote.getVendido()) { // obs
+        for (Lote lote : lotes) {
+            if (!lote.getVendido()) {
                 naoVendidos.add(lote);
             }
         }
-        
         return naoVendidos; 
-     }
-
+    }
+    
     public Lote removeLote(int numero) {
         Lote loteRemovido = null;
         
@@ -90,5 +89,5 @@ public class Leilao{
         }
         
         return loteRemovido;
-    }     
 }     
+}
