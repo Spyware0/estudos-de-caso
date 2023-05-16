@@ -1,7 +1,7 @@
 package estudoDeCaso2.main;
 import estudoDeCaso2.LeilaoVirtual.*;
-public class Main {
 
+public class Main {
     public static void main(String[] args) {
         
         Pessoa p1 = new Pessoa("Gabriel");
@@ -12,9 +12,9 @@ public class Main {
         leilao.adicionaLote("lote de carros");
         leilao.adicionaLote("lote de barcos");
         
-        leilao.lanceLote(0, p3, 600);
-        leilao.lanceLote(0, p1, 1000);
-        leilao.lanceLote(0, p2, 300);
+        System.out.println(leilao.lanceLote(0, p3, 600));
+        System.out.println(leilao.lanceLote(0, p1, 1000));
+        System.out.println(leilao.lanceLote(0, p2, 300));
         
         leilao.close();
 
@@ -24,5 +24,7 @@ public class Main {
         }
 
         leilao.close();
+        Interface inter = new Interface(leilao);
+        inter.iniciar();
     }
 }
