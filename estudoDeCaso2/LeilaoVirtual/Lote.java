@@ -32,16 +32,14 @@ public class Lote {
     }
 
 
-    public void lancePara(Pessoa licitante, double valor) {
+    public StringBuilder lancePara(Pessoa licitante, double valor) {
         if (this.maiorLance == null || (this.maiorLance.getValor() < valor)) {
             this.setMaiorLance(new Lance(licitante, valor));
+            return null;
         }else {
-            System.out.println("Lote no: " + this.getNumero() + "(" +
-            
-            this.getDescricao() + ")" +
-            "Atualmente tem um lance de: " +
-            this.maiorLance.getValor());
-        
+            StringBuilder text = new StringBuilder();
+            text.append("Lote no: ").append(this.getNumero()).append("(").append(this.getDescricao()).append(")").append("Atualmente tem um lance de: ").append(this.maiorLance.getValor());
+            return text;
         }
     }
 
