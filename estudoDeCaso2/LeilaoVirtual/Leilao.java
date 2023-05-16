@@ -12,11 +12,13 @@ public class Leilao{
         this.numeroProxLote = 1;
     }
 
+
     public void adicionaLote(String descricao) {
         this.lotes.add(new Lote(this.numeroProxLote, descricao));
         this.numeroProxLote++;
     }
     
+
     public void mostraLotes() {
         Iterator<Lote> it = this.lotes.iterator();
         while (it.hasNext()) {
@@ -31,6 +33,7 @@ public class Leilao{
         }
     }
     
+
     public Lote getLote(int numero) {
         if ((numero >= 1) && (numero < this.numeroProxLote)) {
             Lote loteSelecionado = this.lotes.get(numero - 1);
@@ -44,25 +47,25 @@ public class Leilao{
         }
     }
 
-    public void lanceLote(int indice, Pessoa p, double valor){
-        this.lotes.get(indice).lancePara(p, valor); // retornar string builder
+
+    public StringBuilder lanceLote(int indice, Pessoa p, double valor){
+        return this.lotes.get(indice).lancePara(p, valor);
     }
+
 
     public void close(){
         for (Lote lote : lotes){
             Lance lance = lote.getMaiorLance();
-            try{
-                System.out.println(lote.toString());
-                if (lance != null)
-                    System.out.println("Lance vendido para " + lance.getLicitante().getNome() + " no valor de " + lance.getValor());
-                else
-                    System.out.println("nenhum lance no momento");
-            }
-            catch(IndexOutOfBoundsException ex){
-                break;
-            }
+            
+            System.out.println(lote.toString());
+            if (lance != null)
+                System.out.println("Lance vendido para " + lance.getLicitante().getNome() + " no valor de " + lance.getValor());
+            else
+                System.out.println("nenhum lance no momento");
+            
         }
     }
+
 
     public  ArrayList<Lote> getNaoVendidos() {
         ArrayList<Lote> naoVendidos = new ArrayList<>();
@@ -75,6 +78,7 @@ public class Leilao{
         return naoVendidos; 
     }
     
+
     public Lote removeLote(int numero) {
         Lote loteRemovido = null;
         
@@ -89,5 +93,5 @@ public class Leilao{
         }
         
         return loteRemovido;
-}     
+    }     
 }
