@@ -1,29 +1,17 @@
 package estudoDeCaso2.main;
 import estudoDeCaso2.LeilaoVirtual.*;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
-        
-        Pessoa p1 = new Pessoa("Gabriel");
-        Pessoa p2 = new Pessoa ("kerlyane");
-        Pessoa p3 = new Pessoa ("andria");
+    public static void main(String[] args) throws IOException, InterruptedException {
+        //Limpa a tela no windows, no linux e no MacOS
+        if (System.getProperty("os.name").contains("Windows"))
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        else
+            Runtime.getRuntime().exec("clear");
+
         
         Leilao leilao = new Leilao();
-        leilao.adicionaLote("lote de carros");
-        leilao.adicionaLote("lote de barcos");
-        
-        System.out.println(leilao.lanceLote(0, p3, 600));
-        System.out.println(leilao.lanceLote(0, p1, 1000));
-        System.out.println(leilao.lanceLote(0, p2, 300));
-        
-        leilao.close();
-
-        for (Lote lote: leilao.getNaoVendidos()){
-            Lote l = leilao.removeLote(lote.getNumero());
-            System.out.println(l.toString());
-        }
-
-        leilao.close();
         Interface inter = new Interface(leilao);
         inter.iniciar();
     }

@@ -32,10 +32,10 @@ public class Lote {
     }
 
 
-    public StringBuilder lancePara(Pessoa licitante, double valor) {
+    public StringBuilder lancePara(String licitante, double valor) {
         if (this.maiorLance == null || (this.maiorLance.getValor() < valor)) {
-            this.setMaiorLance(new Lance(licitante, valor));
-            return null;
+            this.setMaiorLance(new Lance(new Pessoa(licitante), valor));
+            return new StringBuilder("Seu lance foi o maior registrado no momento");
         }else {
             StringBuilder text = new StringBuilder();
             text.append("Lote no: ").append(this.getNumero()).append("(").append(this.getDescricao()).append(")").append("Atualmente tem um lance de: ").append(this.maiorLance.getValor());

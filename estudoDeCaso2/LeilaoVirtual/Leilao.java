@@ -13,9 +13,13 @@ public class Leilao{
     }
 
 
-    public void adicionaLote(String descricao) {
-        this.lotes.add(new Lote(this.numeroProxLote, descricao));
-        this.numeroProxLote++;
+    public boolean adicionaLote(String descricao) {
+        if (descricao != null & descricao.length() != 0){
+            this.lotes.add(new Lote(this.numeroProxLote, descricao));
+            this.numeroProxLote++;
+            return true;
+        }
+        return false;
     }
     
 
@@ -26,7 +30,7 @@ public class Leilao{
             System.out.println(lote.getNumero() + ": " + lote.getDescricao());
             Lance melhorLance = lote.getMaiorLance();
             if (melhorLance != null) {
-                System.out.println(" Lance:" + melhorLance.getValor());
+                System.out.println(" Licitante: " + melhorLance.getLicitante().getNome() + "\n Valor: " + melhorLance.getValor());
             } else {
                 System.out.println(" (Nenhum Lance)");
             }
@@ -48,8 +52,12 @@ public class Leilao{
     }
 
 
-    public StringBuilder lanceLote(int indice, Pessoa p, double valor){
-        return this.lotes.get(indice).lancePara(p, valor);
+    public StringBuilder lanceLote(String descricao, String nome, double valor){
+        for (Lote lote: lotes){
+            if (lote.getDescricao().equals(descricao))
+                return lote.lancePara(nome, valor);
+        }
+        return null;
     }
 
 
@@ -67,7 +75,7 @@ public class Leilao{
     }
 
 
-    public  ArrayList<Lote> getNaoVendidos() {
+    public ArrayList<Lote> getNaoVendidos() {
         ArrayList<Lote> naoVendidos = new ArrayList<>();
         
         for (Lote lote : lotes) {
